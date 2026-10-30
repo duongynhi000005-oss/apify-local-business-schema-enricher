@@ -1,34 +1,23 @@
 {
   "actorSpecification": 1,
-  "name": "b2b-local-business-schema-enricher",
-  "title": "Local Business Lead & Schema Enricher (Google Maps, Contacts, Booking & MCP)",
-  "description": "Extracts rich local business data: Schema.org (LocalBusiness, Organization, PostalAddress, GeoCoordinates, OpeningHours, AggregateRating), verified direct emails, phone numbers, booking links (Calendly, Acuity, Doctolib, OpenTable, HubSpot), and socials at $0.004/business. Includes native MCP server support.",
-  "version": "1.0.0",
+  "name": "local-business-schema-enricher",
+  "title": "Local Business, Healthcare & Franchise Lead + Booking Enricher",
+  "description": "Extracts NAP (Name, Address, Phone), Emails, Geo-coordinates, Opening Hours, Ratings, and Online Booking Platforms (Calendly, OpenTable, Doctolib, Zocdoc, Mindbody, Vagaro, Toast, Square) from local business websites.",
+  "version": "1.0",
   "meta": {
-    "templateId": "js-crawlee-cheerio"
+    "templateId": "js-start"
   },
-  "pricing": {
-    "pricingModel": "PAY_PER_EVENT",
-    "pricingPlan": {
-      "path": ".actor/pay_per_event.json"
-    }
-  },
-  "categories": [
-    "LEAD_GENERATION",
-    "BUSINESS",
-    "AI",
-    "DEVELOPER_TOOLS"
-  ],
-  "webServerMcpPath": "/mcp",
   "input": "./input_schema.json",
   "dockerfile": "./Dockerfile",
   "output": {
     "actorOutputSchemaVersion": 1,
-    "title": "Enriched Local Businesses Output",
+    "title": "Local Business, Healthcare & Franchise Lead + Booking Enricher Output",
+    "description": "Extracts NAP (Name, Address, Phone), Emails, Geo-coordinates, Opening Hours, Ratings, and Online Booking Platforms (Calendly, OpenTable, Doctolib, Zocdoc, Mindbody, Vagaro, Toast, Square) from local business websites.",
+    "type": "object",
     "properties": {
-      "dataset": {
+      "results": {
         "type": "string",
-        "title": "Enriched Local Businesses",
+        "title": "Enriched Dataset Items",
         "template": "{{links.apiDefaultDatasetUrl}}/items"
       }
     }
@@ -36,51 +25,84 @@
   "storages": {
     "dataset": {
       "actorSpecification": 1,
+      "title": "Local Business, Healthcare & Franchise Lead + Booking Enricher Dataset",
+      "description": "Extracts NAP (Name, Address, Phone), Emails, Geo-coordinates, Opening Hours, Ratings, and Online Booking Platforms (Calendly, OpenTable, Doctolib, Zocdoc, Mindbody, Vagaro, Toast, Square) from local business websites.",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "url",
+              "businessName",
+              "schemaType",
+              "telephone",
+              "emails",
+              "bookingPlatforms"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "url": {
+                "label": "URL",
+                "format": "text"
+              },
+              "businessName": {
+                "label": "Business Name",
+                "format": "text"
+              },
+              "schemaType": {
+                "label": "Business Type",
+                "format": "text"
+              },
+              "telephone": {
+                "label": "Phone",
+                "format": "text"
+              },
+              "emails": {
+                "label": "Emails",
+                "format": "text"
+              },
+              "bookingPlatforms": {
+                "label": "Booking Systems",
+                "format": "text"
+              }
+            }
+          }
+        }
+      },
       "fields": {
         "type": "object",
         "properties": {
           "url": {
             "type": "string",
-            "title": "url"
+            "title": "URL",
+            "description": "URL"
           },
-          "name": {
+          "businessName": {
             "type": "string",
-            "title": "name"
+            "title": "Business Name",
+            "description": "Business Name"
+          },
+          "schemaType": {
+            "type": "string",
+            "title": "Business Type",
+            "description": "Business Type"
           },
           "telephone": {
             "type": "string",
-            "title": "telephone"
+            "title": "Phone",
+            "description": "Phone"
           },
-          "email": {
-            "type": "string",
-            "title": "email"
+          "emails": {
+            "type": "array",
+            "title": "Emails",
+            "description": "Emails"
           },
-          "address": {
-            "type": "string",
-            "title": "address"
-          },
-          "AggregateRating": {
-            "type": "string",
-            "title": "AggregateRating"
-          }
-        }
-      },
-      "views": {
-        "overview": {
-          "title": "Enriched Local Businesses",
-          "transformation": {
-            "fields": [
-              "url",
-              "name",
-              "telephone",
-              "email",
-              "address",
-              "AggregateRating"
-            ]
-          },
-          "display": {
-            "component": "table",
-            "properties": {}
+          "bookingPlatforms": {
+            "type": "array",
+            "title": "Booking Systems",
+            "description": "Booking Systems"
           }
         }
       }
