@@ -1,33 +1,23 @@
 {
-  "title": "Local Business Lead & Schema Enricher Input",
+  "title": "Local Business & Booking System Enricher Input",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
     "startUrls": {
-      "title": "Target Business Website URLs or Domains",
+      "title": "Local Business Website URLs",
       "type": "array",
-      "description": "List of local business websites, Google Maps website links, clinic/contractor/restaurant domains to enrich.",
+      "description": "List of local business, clinic, restaurant, salon, or agency websites.",
       "editor": "requestListSources",
+      "default": [
+        {
+          "url": "https://apify.com"
+        }
+      ],
       "prefill": [
-        { "url": "https://crawlee.dev" }
+        {
+          "url": "https://apify.com"
+        }
       ]
-    },
-    "maxCrawlDepth": {
-      "title": "Max Crawl Depth per Website",
-      "type": "integer",
-      "description": "Depth of subpages crawled to discover contact, booking, and address info.",
-      "default": 1,
-      "minimum": 0,
-      "maximum": 2
-    },
-    "maxPagesPerDomain": {
-      "title": "Max Pages per Domain",
-      "type": "integer",
-      "description": "Maximum number of subpages crawled per business domain.",
-      "default": 4,
-      "minimum": 1,
-      "maximum": 12
     }
-  },
-  "required": ["startUrls"]
+  }
 }
