@@ -1,0 +1,23 @@
+{
+  "title": "Local Business & Booking System Enricher Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "Local Business Website URLs",
+      "type": "array",
+      "description": "List of local business, clinic, restaurant, salon, or agency websites.",
+      "editor": "requestListSources",
+      "default": [
+        {
+          "url": "https://apify.com"
+        }
+      ],
+      "prefill": [
+        {
+          "url": "https://apify.com"
+        }
+      ]
+    }
+  }
+}
