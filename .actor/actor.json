@@ -1,0 +1,25 @@
+{
+  "actorSpecification": 1,
+  "name": "b2b-local-business-schema-enricher",
+  "title": "Local Business Lead & Schema Enricher (Google Maps, Contacts, Booking & MCP)",
+  "description": "Extracts rich local business data: Schema.org (LocalBusiness, Organization, PostalAddress, GeoCoordinates, OpeningHours, AggregateRating), verified direct emails, phone numbers, booking links (Calendly, Acuity, Doctolib, OpenTable, HubSpot), and socials at $0.004/business. Includes native MCP server support.",
+  "version": "1.0.0",
+  "meta": {
+    "templateId": "js-crawlee-cheerio"
+  },
+  "pricing": {
+    "pricingModel": "PAY_PER_EVENT",
+    "pricingPlan": {
+      "path": ".actor/pay_per_event.json"
+    }
+  },
+  "categories": [
+    "LEAD_GENERATION",
+    "BUSINESS",
+    "AI",
+    "DEVELOPER_TOOLS"
+  ],
+  "webServerMcpPath": "/mcp",
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile"
+}
