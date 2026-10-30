@@ -21,5 +21,69 @@
   ],
   "webServerMcpPath": "/mcp",
   "input": "./input_schema.json",
-  "dockerfile": "./Dockerfile"
+  "dockerfile": "./Dockerfile",
+  "output": {
+    "actorOutputSchemaVersion": 1,
+    "title": "Enriched Local Businesses Output",
+    "properties": {
+      "dataset": {
+        "type": "string",
+        "title": "Enriched Local Businesses",
+        "template": "{{links.apiDefaultDatasetUrl}}/items"
+      }
+    }
+  },
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "fields": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "url"
+          },
+          "name": {
+            "type": "string",
+            "title": "name"
+          },
+          "telephone": {
+            "type": "string",
+            "title": "telephone"
+          },
+          "email": {
+            "type": "string",
+            "title": "email"
+          },
+          "address": {
+            "type": "string",
+            "title": "address"
+          },
+          "AggregateRating": {
+            "type": "string",
+            "title": "AggregateRating"
+          }
+        }
+      },
+      "views": {
+        "overview": {
+          "title": "Enriched Local Businesses",
+          "transformation": {
+            "fields": [
+              "url",
+              "name",
+              "telephone",
+              "email",
+              "address",
+              "AggregateRating"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {}
+          }
+        }
+      }
+    }
+  }
 }
