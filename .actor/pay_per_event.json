@@ -1,0 +1,9 @@
+{
+  "actorChargeEvents": {
+    "business-enriched": {
+      "eventTitle": "Local Business Lead Enriched",
+      "eventDescription": "Charged once per business website domain crawled and successfully enriched with Schema.org (LocalBusiness, Geo, OpeningHours), verified contacts, or booking links.",
+      "eventPriceUsd": 0.004
+    }
+  }
+}
